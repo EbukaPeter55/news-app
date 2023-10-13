@@ -1,0 +1,36 @@
+:host{
+  font-family: 'Lato', sans-serif;
+
+  header{
+    .nav-wrapper{
+      max-width: 70rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      margin: 0 auto;
+
+      ul{
+        display: flex;
+        align-items: center;
+        list-style-type: none;
+        gap: 2rem;
+
+        button[type="button"]{
+          background: #ffffffff;
+          border-radius: 5px;
+          border: 1px solid #000000;
+          padding: .5rem 1rem;
+          cursor: pointer;
+
+          &:hover{
+            background: #2F80ED;
+            color: #ffffffff;
+            transition: .5s;
+          }
+        }
+      }
+    }
+  }
+}
+
