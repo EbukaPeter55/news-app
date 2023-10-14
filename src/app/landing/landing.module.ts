@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { LandingComponent } from './landing/landing.component';
 import {NavigationBarComponent} from "../components/navigation-bar/navigation-bar.component";
 import {HeroSectionComponent} from "../components/hero-section/hero-section.component";
+import {NewsSectionComponent} from "../components/news-section/news-section.component";
 
 
 
@@ -10,7 +11,8 @@ import {HeroSectionComponent} from "../components/hero-section/hero-section.comp
   declarations: [
     LandingComponent,
     NavigationBarComponent,
-    HeroSectionComponent
+    HeroSectionComponent,
+    NewsSectionComponent
   ],
   imports: [
     CommonModule,
