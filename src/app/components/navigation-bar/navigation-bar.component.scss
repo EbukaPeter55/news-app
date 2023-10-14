@@ -16,6 +16,10 @@
         list-style-type: none;
         gap: 2rem;
 
+        li{
+          cursor: pointer;
+        }
+
         button[type="button"]{
           background: #ffffffff;
           border-radius: 5px;
