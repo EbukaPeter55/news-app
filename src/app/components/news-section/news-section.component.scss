@@ -24,12 +24,15 @@
       &__card{
         border-radius: 0.4rem;
         border: 1px solid #DDD;
+        height: 34rem;
+        position: relative;
 
         &--image {
           width: 100%;
 
           img{
             width: 100%;
+            height: 32vh;
             overflow: unset;
             overflow-clip-margin: unset;
           }
@@ -40,11 +43,12 @@
           font-size: 1rem;
           font-style: normal;
           font-weight: 500;
-          line-height: normal;
+          line-height: 140%;
           padding-left: 1rem;
         }
 
         p {
+          max-width: 18rem;
           color: #000;
           font-size: 1.2rem;
           font-style: normal;
@@ -54,19 +58,26 @@
         }
 
         &--read{
+          position: absolute;
           display: flex;
           align-items: center;
           justify-content: flex-end;
           gap: .5rem;
           padding-right: 1rem;
+          bottom: 1rem;
+          right: 1rem;
 
-          p{
-            color: #D9852C;
+          button{
+            background: #2F80ED;
+            border: none;
+            border-radius: 5px;
+            color: #FFFFFF;
             font-size: .875rem;
             font-style: normal;
-            font-weight: 600;
+            font-weight: 500;
             line-height: normal;
             cursor: pointer;
+            padding: .5rem 1rem;
           }
         }
       }
