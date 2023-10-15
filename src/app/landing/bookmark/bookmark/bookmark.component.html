@@ -1,0 +1,45 @@
+<section class='news-section'>
+    <ng-container *ngIf="displayModal">
+        <div class="deletemodaloverlay"></div>
+        <div class="deleteModal">
+            <h2>Remove Article</h2>
+            <h6>Are you sure you want to remove bookmarked article?</h6>
+            <div class="deleteModal__buttonwrapper">
+                <button
+                        class="deleteModal__buttonwrapper--cancelbutton"
+                (click)="closeModal()">
+                    Cancel
+                </button>
+                <button
+                        type="submit"
+                        class="deleteModal__buttonwrapper--okbutton"
+                        (click)="removeArticle()"
+                >
+                    {{isLoading ? 'Removing..' : 'Remove'}}
+                </button>
+            </div>
+        </div>
+    </ng-container>
+
+    <div class='news-section__wrapper'>
+        <h2>Bookmarked articles</h2>
+        <ng-container *ngIf="bookmarkedArticle; else NoData">
+            <div class='article-wrapper'>
+                <div class='article-wrapper__card' *ngFor='let article of bookmarkedArticle'>
+                    <div class="article-wrapper__card--image">
+                        <img [src]='article?.urlToImage ? article?.urlToImage : defaultImage' alt="card-image">
+                    </div>
+                    <h6>{{article.publishedAt}}</h6>
+                    <p>{{article.title}}</p>
+                    <div class="article-wrapper__card--read"><button (click)="openWarningModal(article)">Remove</button></div>
+                </div>
+            </div>
+        </ng-container >
+
+        <ng-template #NoData>
+            <div class="news-section__wrapper--noarticle">
+                <h3>Oops! No article found</h3>
+            </div>
+        </ng-template>
+    </div>
+</section>

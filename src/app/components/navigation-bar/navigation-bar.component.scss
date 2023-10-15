@@ -10,6 +10,12 @@
       align-items: center;
       margin: 0 auto;
 
+      .nav-logo{
+        img{
+          cursor: pointer;
+        }
+      }
+
       ul{
         display: flex;
         align-items: center;

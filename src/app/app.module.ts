@@ -7,6 +7,7 @@ import {NavigationBarComponent} from "./components/navigation-bar/navigation-bar
 import {HeroSectionComponent} from "./components/hero-section/hero-section.component";
 import {NewsSectionComponent} from "./components/news-section/news-section.component";
 import {HttpClientModule} from "@angular/common/http";
+import {BookmarkModule} from "./landing/bookmark/bookmark.module";
 
 @NgModule({
   declarations: [
@@ -19,9 +20,13 @@ import {HttpClientModule} from "@angular/common/http";
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    BookmarkModule
   ],
   providers: [],
+  exports: [
+    NavigationBarComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

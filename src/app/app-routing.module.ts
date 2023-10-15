@@ -5,6 +5,10 @@ import {LandingComponent} from "./landing/landing/landing.component";
 const routes: Routes = [
   {
     path: '', component: LandingComponent
+  },
+  {
+    path: 'bookmark',
+    loadChildren: () => import('./landing/bookmark/bookmark.module').then(m => m.BookmarkModule)
   }
 ];
 

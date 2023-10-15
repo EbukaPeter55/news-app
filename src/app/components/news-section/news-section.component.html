@@ -8,7 +8,7 @@
         </div>
         <h6>{{article.publishedAt}}</h6>
         <p>{{article.title}}</p>
-        <div class="article-wrapper__card--read"><button>Bookmark</button></div>
+        <div class="article-wrapper__card--read"><button (click)="bookmarkArticle(article)">Bookmark</button></div>
       </div>
     </div>
   </div>
