@@ -1,8 +1,7 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { BookmarkComponent } from './bookmark/bookmark.component';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {BookmarkComponent} from './bookmark/bookmark.component';
 import {BookmarkRoutingModule} from "./bookmark-routing.module";
-
 
 @NgModule({
   declarations: [
@@ -13,4 +12,6 @@ import {BookmarkRoutingModule} from "./bookmark-routing.module";
     BookmarkRoutingModule,
   ]
 })
-export class BookmarkModule { }
+
+export class BookmarkModule {
+}

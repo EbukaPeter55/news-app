@@ -1,7 +1,7 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
 import {LandingComponent} from "./landing/landing/landing.component";
 import {NavigationBarComponent} from "./components/navigation-bar/navigation-bar.component";
 import {HeroSectionComponent} from "./components/hero-section/hero-section.component";
@@ -9,10 +9,9 @@ import {NewsSectionComponent} from "./components/news-section/news-section.compo
 import {HttpClientModule} from "@angular/common/http";
 import {BookmarkModule} from "./landing/bookmark/bookmark.module";
 import {NgxPaginationModule} from "ngx-pagination";
-import { FooterComponent } from './components/footer/footer.component';
+import {FooterComponent} from './components/footer/footer.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ToastrModule} from "ngx-toastr";
-
 
 @NgModule({
   declarations: [
@@ -27,11 +26,10 @@ import {ToastrModule} from "ngx-toastr";
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    BrowserAnimationsModule, // required animations module
-    ToastrModule.forRoot(), // ToastrModule added
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
     BookmarkModule,
-    NgxPaginationModule,
-
+    NgxPaginationModule
   ],
   providers: [],
   exports: [
@@ -39,4 +37,6 @@ import {ToastrModule} from "ngx-toastr";
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+
+export class AppModule {
+}

@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {LandingService} from "../../shared/landing.service";
-import {pipe, Subject, takeUntil} from "rxjs";
+import {Subject, takeUntil} from "rxjs";
 import {ToastrService} from "ngx-toastr";
 import {Article} from "../../shared/landing.model";
 
@@ -9,18 +9,27 @@ import {Article} from "../../shared/landing.model";
   templateUrl: './bookmark.component.html',
   styleUrls: ['./bookmark.component.scss']
 })
-export class BookmarkComponent implements OnInit{
+
+export class BookmarkComponent implements OnInit {
   destroy$ = new Subject<void>();
   isLoading: boolean = false;
   bookmarkedArticle: Article[] = [];
-  defaultImage:string = './assets/images/card-image.svg';
+  defaultImage: string = './assets/images/card-image.svg';
   displayModal: boolean = false;
-  articleToRemove: any = null;
-
+  articleToRemove: Article = {
+    author: '',
+    content: '',
+    description: '',
+    publishedAt: '',
+    source: {id: '', name: ''},
+    title: '',
+    url: '',
+    urlToImage: ''
+  };
 
   constructor(
-      private landingService: LandingService,
-      private toastr: ToastrService
+    private landingService: LandingService,
+    private toastService: ToastrService,
   ) {
   }
 
@@ -28,34 +37,39 @@ export class BookmarkComponent implements OnInit{
     this.getBookmarkedArticles();
   }
 
-  getBookmarkedArticles(){
-    let retrievedArticle = localStorage.getItem('article');
-    let retrievedBookmarkedArticle = JSON.parse(`${retrievedArticle}`)
-    if (retrievedBookmarkedArticle) {
-      this.isLoading = false;
-      this.bookmarkedArticle = retrievedBookmarkedArticle;
-    } else {
-      this.isLoading = false;
-    }
+  /**
+   * Get bookmarked articles
+   */
+  getBookmarkedArticles() {
+    this.landingService.article
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(response => {
+        if(response){
+          this.bookmarkedArticle = response;
+        }
+      });
   }
 
-  closeModal(){
+  closeModal() {
     this.displayModal = false;
   }
 
-  openWarningModal(articleToDelete:any){
+  openWarningModal(articleToDelete: Article) {
     this.articleToRemove = articleToDelete;
     this.displayModal = true;
   }
 
-  removeArticle(){
+  /**
+   * Remove article and update the local storage with the latest available bookmarked articles
+   */
+  removeArticle() {
     this.isLoading = true;
-    let filterArticle = this.bookmarkedArticle.filter((article:any) => article.title !== this.articleToRemove.title);
-     localStorage.setItem('article', JSON.stringify(filterArticle));
+    let filterArticle = this.bookmarkedArticle.filter((article: Article) => article.title !== this.articleToRemove.title);
+    localStorage.setItem('article', JSON.stringify(filterArticle));
     this.getBookmarkedArticles();
+    this.bookmarkedArticle = filterArticle;
     this.isLoading = false;
     this.closeModal();
-    this.toastr.success('Article removed successfully!');
+    this.toastService.success('Article removed successfully!');
   }
-
 }

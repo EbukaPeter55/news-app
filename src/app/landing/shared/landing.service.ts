@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {BehaviorSubject, Observable} from "rxjs";
 import {Article, ArticleResponse} from "./landing.model";
@@ -12,16 +12,29 @@ export class LandingService {
 
   constructor(
     private http: HttpClient
-  ) { }
+  ) {
+    const cachedArticle = localStorage.getItem('article');
+    if (cachedArticle) {
+      this.cachedArticleSubject.next(JSON.parse(cachedArticle));
+    }
+  }
 
-  private cachedArticleSubject = new BehaviorSubject<any | null>(localStorage.getItem('article') || null);
+  private cachedArticleSubject = new BehaviorSubject<Article[]>([]);
   article = this.cachedArticleSubject.asObservable();
-  cacheArticle(article: Article) {
+
+  /**
+   * Persist bookmarked articles using browser storage (i.e. local storage)
+   * @param article Bookmarked articles
+   */
+  cacheArticle(article: Article[]) {
     localStorage.setItem('article', JSON.stringify(article));
     this.cachedArticleSubject.next(article);
   }
 
-  getArticles():Observable<ArticleResponse>{
+  /**
+   * Http request to get articles via the API endpoint
+   */
+  getArticles(): Observable<ArticleResponse> {
     return this.http.get<ArticleResponse>(`${this.BASE_URL}/everything?q=tesla&from=2023-09-15&sortBy=publishedAt&apiKey=${this.api_key}`);
   }
 }

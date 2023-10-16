@@ -1,14 +1,15 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {LandingService} from "../shared/landing.service";
 import {Subject, takeUntil} from "rxjs";
-import {Article, ArticleResponse} from "../shared/landing.model";
+import {Article} from "../shared/landing.model";
 
 @Component({
   selector: 'app-landing',
   templateUrl: './landing.component.html',
   styleUrls: ['./landing.component.scss']
 })
-export class LandingComponent implements OnInit, OnDestroy{
+
+export class LandingComponent implements OnInit, OnDestroy {
   isLoading: boolean = false;
   destroy$ = new Subject<void>();
   articles: Article[] = [];
@@ -22,7 +23,10 @@ export class LandingComponent implements OnInit, OnDestroy{
     this.getArticles();
   }
 
-  getArticles(){
+  /**
+   * Get all articles by subscribing to observables returning data from the service
+   */
+  getArticles() {
     this.isLoading = true;
     this.landingService.getArticles().pipe(takeUntil(this.destroy$)).subscribe(response => {
       if (response) {
@@ -34,7 +38,9 @@ export class LandingComponent implements OnInit, OnDestroy{
     })
   }
 
-
+  /**
+   * Unsubscribe to handle memory leak
+   */
   ngOnDestroy() {
     this.destroy$.next()
     this.destroy$.complete()

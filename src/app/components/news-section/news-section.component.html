@@ -6,14 +6,18 @@
     <div class='news-section__wrapper'>
       <h2>Newest reads</h2>
       <div class='article-wrapper'>
-        <div class='article-wrapper__card' *ngFor='let article of teslaArticles | paginate: { itemsPerPage: 10, currentPage: page }'>
+        <div class='article-wrapper__card'
+             *ngFor='let article of teslaArticles | paginate: { itemsPerPage: 10, currentPage: page }'>
           <div class="article-wrapper__card--image">
             <img [src]='article?.urlToImage ? article?.urlToImage : defaultImage' alt="card-image">
           </div>
           <h6>{{article.publishedAt | date:'mediumDate'}}</h6>
           <p>{{article.title}}</p>
-          <div class="article-wrapper__card--read"><button
-            (click)="bookmarkArticle(article)">Bookmark</button></div>
+          <div class="article-wrapper__card--read">
+            <button
+              (click)="bookmarkArticle(article)">Bookmark
+            </button>
+          </div>
         </div>
       </div>
       <div class="news-section__wrapper--paginate">
