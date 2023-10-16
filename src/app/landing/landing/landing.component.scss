@@ -1,8 +1,14 @@
 :host{
   font-family: 'Lato', sans-serif;
   box-sizing: border-box;
+
+  .news-wrapper{
+    min-height: 100vh;
+
+    &__body{
+        flex: 1;
+    }
+  }
 }
 
-body{
-  margin: unset!important;
-}
+

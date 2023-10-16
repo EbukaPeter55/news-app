@@ -10,6 +10,9 @@ import {HttpClientModule} from "@angular/common/http";
 import {BookmarkModule} from "./landing/bookmark/bookmark.module";
 import {NgxPaginationModule} from "ngx-pagination";
 import { FooterComponent } from './components/footer/footer.component';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {ToastrModule} from "ngx-toastr";
+
 
 @NgModule({
   declarations: [
@@ -24,8 +27,11 @@ import { FooterComponent } from './components/footer/footer.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot(), // ToastrModule added
     BookmarkModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+
   ],
   providers: [],
   exports: [

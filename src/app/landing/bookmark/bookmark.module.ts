@@ -4,14 +4,13 @@ import { BookmarkComponent } from './bookmark/bookmark.component';
 import {BookmarkRoutingModule} from "./bookmark-routing.module";
 
 
-
 @NgModule({
   declarations: [
     BookmarkComponent
   ],
   imports: [
     CommonModule,
-    BookmarkRoutingModule
+    BookmarkRoutingModule,
   ]
 })
 export class BookmarkModule { }

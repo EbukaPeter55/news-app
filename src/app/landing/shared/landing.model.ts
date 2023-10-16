@@ -1,4 +1,4 @@
-interface Source {
+export interface Source {
     id: string | number;
     name: string;
 }
@@ -17,5 +17,5 @@ export interface Article {
 export interface ArticleResponse {
     status: string;
     totalResults: number;
-    articles: Article
+    articles: Article[]
 }

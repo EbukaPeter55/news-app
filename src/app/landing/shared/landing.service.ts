@@ -21,7 +21,7 @@ export class LandingService {
     this.cachedArticleSubject.next(article);
   }
 
-  getArticles():Observable<any>{
-    return this.http.get<any>(`${this.BASE_URL}/everything?q=tesla&from=2023-09-15&sortBy=publishedAt&apiKey=${this.api_key}`);
+  getArticles():Observable<ArticleResponse>{
+    return this.http.get<ArticleResponse>(`${this.BASE_URL}/everything?q=tesla&from=2023-09-15&sortBy=publishedAt&apiKey=${this.api_key}`);
   }
 }

@@ -29,7 +29,7 @@
                     <div class="article-wrapper__card--image">
                         <img [src]='article?.urlToImage ? article?.urlToImage : defaultImage' alt="card-image">
                     </div>
-                    <h6>{{article.publishedAt}}</h6>
+                    <h6>{{article.publishedAt | date:'mediumDate'}}</h6>
                     <p>{{article.title}}</p>
                     <div class="article-wrapper__card--read"><button (click)="openWarningModal(article)">Remove</button></div>
                 </div>
@@ -38,7 +38,7 @@
 
         <ng-template #NoData>
             <div class="news-section__wrapper--noarticle">
-                <h3>Oops! No article found</h3>
+                <h4>Oops! No article found</h4>
             </div>
         </ng-template>
     </div>

@@ -11,7 +11,7 @@ import {Article, ArticleResponse} from "../shared/landing.model";
 export class LandingComponent implements OnInit, OnDestroy{
   isLoading: boolean = false;
   destroy$ = new Subject<void>();
-  articles: any[] = [];
+  articles: Article[] = [];
 
   constructor(
     private landingService: LandingService
@@ -26,7 +26,6 @@ export class LandingComponent implements OnInit, OnDestroy{
     this.isLoading = true;
     this.landingService.getArticles().pipe(takeUntil(this.destroy$)).subscribe(response => {
       if (response) {
-        console.log('articles', response)
         this.isLoading = false;
         this.articles = response?.articles
       } else {

@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {LandingService} from "../../landing/shared/landing.service";
 import {Article} from "../../landing/shared/landing.model";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-news-section',
@@ -10,28 +11,28 @@ import {Article} from "../../landing/shared/landing.model";
 
 export class NewsSectionComponent implements OnInit{
 defaultImage:string = './assets/images/card-image.svg';
-@Input() teslaArticles: any;
-@Input() loadingState: any;
+@Input() teslaArticles: Article[] = [];
+@Input() loadingState: boolean = false;
 page: number = 1;
-
 bookmarkedArticles: Article[] = [];
 
 constructor(
-    private landingService: LandingService
+    private landingService: LandingService,
+    private toastr: ToastrService
 ) {
 }
 
 ngOnInit() {
-  console.log('tesla articles', this.teslaArticles);
 }
 
 bookmarkArticle(article:any){
   if(!this.bookmarkedArticles.includes((article))){
     this.bookmarkedArticles.push(article);
   }
-  console.log('list of bookmarked article', this.bookmarkedArticles);
+  this.teslaArticles.forEach(articleDisplayed=>{
+  })
+  this.toastr.success(`Article by ${article.author} successfully bookmarked!`);
   article = this.bookmarkedArticles
   this.landingService.cacheArticle(article);
-  console.log('article', article);
 }
 }
