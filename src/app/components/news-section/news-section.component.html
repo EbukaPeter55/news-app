@@ -1,15 +1,23 @@
 <section class='news-section'>
-  <div class='news-section__wrapper'>
-    <h2>Newest reads</h2>
-    <div class='article-wrapper'>
-      <div class='article-wrapper__card' *ngFor='let article of teslaArticles'>
-        <div class="article-wrapper__card--image">
-          <img [src]='article?.urlToImage ? article?.urlToImage : defaultImage' alt="card-image">
+  <ng-container *ngIf="loadingState; else showArticles">
+    <h3>Loading articles...</h3>
+  </ng-container>
+  <ng-template #showArticles>
+    <div class='news-section__wrapper'>
+      <h2>Newest reads</h2>
+      <div class='article-wrapper'>
+        <div class='article-wrapper__card' *ngFor='let article of teslaArticles | paginate: { itemsPerPage: 10, currentPage: page }'>
+          <div class="article-wrapper__card--image">
+            <img [src]='article?.urlToImage ? article?.urlToImage : defaultImage' alt="card-image">
+          </div>
+          <h6>{{article.publishedAt | date:'mediumDate'}}</h6>
+          <p>{{article.title}}</p>
+          <div class="article-wrapper__card--read"><button (click)="bookmarkArticle(article)">Bookmark</button></div>
         </div>
-        <h6>{{article.publishedAt}}</h6>
-        <p>{{article.title}}</p>
-        <div class="article-wrapper__card--read"><button (click)="bookmarkArticle(article)">Bookmark</button></div>
+      </div>
+      <div class="news-section__wrapper--paginate">
+        <pagination-controls (pageChange)="page = $event"></pagination-controls>
       </div>
     </div>
-  </div>
+  </ng-template>
 </section>

@@ -12,7 +12,7 @@
 
     h1{
       color: #FFFFFF;
-      font-size: 5rem;
+      font-size: clamp(3rem, 5vw, 5rem);;
       font-style: normal;
       font-weight: 400;
       line-height: normal;

@@ -8,6 +8,8 @@ import {HeroSectionComponent} from "./components/hero-section/hero-section.compo
 import {NewsSectionComponent} from "./components/news-section/news-section.component";
 import {HttpClientModule} from "@angular/common/http";
 import {BookmarkModule} from "./landing/bookmark/bookmark.module";
+import {NgxPaginationModule} from "ngx-pagination";
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -15,13 +17,15 @@ import {BookmarkModule} from "./landing/bookmark/bookmark.module";
     LandingComponent,
     NavigationBarComponent,
     HeroSectionComponent,
-    NewsSectionComponent
+    NewsSectionComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    BookmarkModule
+    BookmarkModule,
+    NgxPaginationModule
   ],
   providers: [],
   exports: [

@@ -1,6 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {LandingService} from "../shared/landing.service";
 import {Subject, takeUntil} from "rxjs";
+import {Article, ArticleResponse} from "../shared/landing.model";
 
 @Component({
   selector: 'app-landing',
@@ -10,7 +11,7 @@ import {Subject, takeUntil} from "rxjs";
 export class LandingComponent implements OnInit, OnDestroy{
   isLoading: boolean = false;
   destroy$ = new Subject<void>();
-  articles: any = [];
+  articles: any[] = [];
 
   constructor(
     private landingService: LandingService
@@ -25,9 +26,9 @@ export class LandingComponent implements OnInit, OnDestroy{
     this.isLoading = true;
     this.landingService.getArticles().pipe(takeUntil(this.destroy$)).subscribe(response => {
       if (response) {
+        console.log('articles', response)
         this.isLoading = false;
-        this.articles = response?.articles;
-        console.log('articles', this.articles)
+        this.articles = response?.articles
       } else {
         this.isLoading = false;
       }

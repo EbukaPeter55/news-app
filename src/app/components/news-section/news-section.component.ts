@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {LandingService} from "../../landing/shared/landing.service";
+import {Article} from "../../landing/shared/landing.model";
 
 @Component({
   selector: 'app-news-section',
@@ -10,7 +11,10 @@ import {LandingService} from "../../landing/shared/landing.service";
 export class NewsSectionComponent implements OnInit{
 defaultImage:string = './assets/images/card-image.svg';
 @Input() teslaArticles: any;
-bookmarkedArticles: any[] = [];
+@Input() loadingState: any;
+page: number = 1;
+
+bookmarkedArticles: Article[] = [];
 
 constructor(
     private landingService: LandingService

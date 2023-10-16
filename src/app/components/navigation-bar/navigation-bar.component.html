@@ -1,14 +1,45 @@
+<!--<header class="navbar">-->
+<!--  <nav class="nav-wrapper">-->
+<!--    <div class="nav-logo">-->
+<!--      <img routerLink="/" src="./assets/images/tesnews.svg" alt="logo">-->
+<!--    </div>-->
+<!--    <ul>-->
+<!--      <li routerLink="/">Home</li>-->
+<!--      <button type="button"-->
+<!--      routerLink="/bookmark">See Bookmark</button>-->
+<!--    </ul>-->
+<!--  </nav>-->
+<!--</header>-->
+
 <header>
-  <nav class="nav-wrapper">
-    <div class="nav-logo">
-      <img routerLink="/" src="./assets/images/tesnews.svg" alt="logo">
+  <nav class="navbar navbar-expand-sm bg-white nav-wrapper">
+    <div class="container-fluid nav-wrapper__container">
+      <a class="navbar-brand nav-logo" routerLink="/"><img routerLink="/" src="./assets/images/tesnews.svg" alt="logo"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse nav-wrapper__container--linkwrapper" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <button type="button" routerLink="/bookmark">See Bookmark</button>
+          </li>
+        </ul>
+      </div>
     </div>
-    <ul>
-      <li routerLink="/">Home</li>
-      <li>About</li>
-      <li>News</li>
-      <button type="button"
-      routerLink="/bookmark">See Bookmark</button>
-    </ul>
   </nav>
 </header>
+
+
+<!--<nav class="nav-wrapper">-->
+<!--  <div class="nav-logo">-->
+<!--    <img routerLink="/" src="./assets/images/tesnews.svg" alt="logo">-->
+<!--  </div>-->
+<!--  <ul>-->
+<!--    <li routerLink="/">Home</li>-->
+<!--    <button type="button"-->
+<!--            routerLink="/bookmark">See Bookmark</button>-->
+<!--  </ul>-->
+<!--</nav>-->

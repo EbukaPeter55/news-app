@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {BehaviorSubject, Observable} from "rxjs";
+import {Article, ArticleResponse} from "./landing.model";
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class LandingService {
 
   private cachedArticleSubject = new BehaviorSubject<any | null>(localStorage.getItem('article') || null);
   article = this.cachedArticleSubject.asObservable();
-  cacheArticle(article: any) {
+  cacheArticle(article: Article) {
     localStorage.setItem('article', JSON.stringify(article));
     this.cachedArticleSubject.next(article);
   }

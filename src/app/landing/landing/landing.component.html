@@ -1,5 +1,11 @@
-<app-hero-section></app-hero-section>
-<app-news-section
-    [teslaArticles]="articles"
-></app-news-section
+<div class="news-wrapper">
+  <div class="news-wrapper__body">
+    <app-hero-section></app-hero-section>
+    <app-news-section
+      [teslaArticles]="articles"
+      [loadingState]="isLoading"
+    ></app-news-section
     >
+  </div>
+</div>
+
