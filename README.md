@@ -1,6 +1,18 @@
 # NewsApp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.6.
+It is an app that showcases news articles from Tesla. The UI inspiration is from this simple figma design:
+https://www.figma.com/file/Zc3ODADEo0HzYdUNvwJndv/News-app-design?type=design&node-id=1-8&mode=design&t=wHOk34hxg0bBEmB6-0
+
+# Stack/Technology
+Angular 16, Typescript, SCSS (BEM naming convention), Bootstrap, ngx-pagination and ngx-toastr.
+
+# Features
+1. Fetch and display a list of articles
+2. Ability to bookmark an article
+3. View a list of bookmarked articles
+4. Ability to remove bookmarked articles from the list.
+5. Pagination
 
 ## Development server
 
