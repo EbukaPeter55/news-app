@@ -35,6 +35,6 @@ export class LandingService {
    * Http request to get articles via the API endpoint
    */
   getArticles(): Observable<ArticleResponse> {
-    return this.http.get<ArticleResponse>(`${this.BASE_URL}/everything?q=tesla&from=2023-09-15&sortBy=publishedAt&apiKey=${this.api_key}`);
+    return this.http.get<ArticleResponse>(`${this.BASE_URL}/everything?q=tesla&sortBy=publishedAt&apiKey=${this.api_key}`);
   }
 }

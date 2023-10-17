@@ -1,7 +1,8 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {LandingService} from "../shared/landing.service";
-import {Subject, takeUntil} from "rxjs";
+import {catchError, of, Subject, takeUntil} from "rxjs";
 import {Article} from "../shared/landing.model";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-landing',
@@ -15,7 +16,8 @@ export class LandingComponent implements OnInit, OnDestroy {
   articles: Article[] = [];
 
   constructor(
-    private landingService: LandingService
+    private landingService: LandingService,
+    private toastService: ToastrService,
   ) {
   }
 
@@ -24,16 +26,23 @@ export class LandingComponent implements OnInit, OnDestroy {
   }
 
   /**
-   * Get all articles by subscribing to observables returning data from the service
+   * Get all articles by subscribing to observables returning data from the service.
+   * Handle errors using the catchError and of rxjs operators
    */
   getArticles() {
     this.isLoading = true;
-    this.landingService.getArticles().pipe(takeUntil(this.destroy$)).subscribe(response => {
+    this.landingService.getArticles().pipe(takeUntil(this.destroy$),
+      catchError(error=>{
+        this.isLoading = false;
+        this.toastService.error(error?.error?.message);
+        return of(null);
+      })).subscribe(response => {
       if (response) {
         this.isLoading = false;
         this.articles = response?.articles
       } else {
         this.isLoading = false;
+        this.toastService.error('An error occurred. Failed to retrieve articles');
       }
     })
   }
